@@ -1,24 +1,27 @@
-import { useState } from "react";
 
-export default function Counter() {
-    let count = 100
-    const [value, setValue] = useState(999999);
 
-    function increment() {
-        count++
-        console.log({ count })
+/* named export */
+export function Counter() {
+
+    let counterValue = 100
+
+    const decrement = () =>{
+        console.log("decrement");
+        counterValue--
+        console.log({counterValue});
     }
-    function incrementValue() {
-        setValue(value + 1)
+    const increment = () =>{
+        console.log("increment");
+        counterValue++
+        console.log({counterValue});
     }
 
-    console.log("render..")
-    return (
-        <>
-            <div>Counter - {count}</div>
-            <div>value- {value}</div>
-            <button onClick={increment} >increment counter</button>
-            <button onClick={incrementValue} >increment value</button>
-        </>
-    )
+    console.log("render");
+    return <>
+        <p>old counter: {counterValue} </p>
+        <hr />
+        <button onClick={decrement} >decrement</button>
+        <button onClick={increment}>increment</button>
+    </>
 }
+
