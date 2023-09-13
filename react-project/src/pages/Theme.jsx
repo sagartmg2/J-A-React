@@ -1,14 +1,15 @@
+
+import { useState } from "react"
+
 export default function Theme() {
-    // let theme = "DARK"
-    let theme = "LIGHT"
+    const [theme, setTheme] = useState("LIGHT")  // return [  "LIght", mutator function ]
 
     const lightTheme = () => {
-        theme = "LIGHT"
-        console.log({theme});
+        setTheme("LIGHT")
     }
     const darkTheme = () => {
-        theme = "DARK"
-        console.log({theme});
+        // theme = "DARK" // cannot change state directly
+        setTheme("DARK") // only change state using their respecitve mutator function
     }
 
     /* 
@@ -19,7 +20,7 @@ export default function Theme() {
     console.log("render....");
 
     return <>
-        <div className={`  ${theme === "DARK" ? "dark-theme" : ""}`} style={{ height: "100vh" }}>
+        <div className={`${theme === "DARK" ? "dark-theme" : ""}`} style={{ height: "100vh" }}>
             <button onClick={lightTheme}>light theme</button>
             <button onClick={darkTheme}>dark theme</button>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iusto neque dignissimos iste quia quas dolorum aliquam ullam consequuntur, odit magnam delectus labore modi tempore dolor minus! Quaerat, iure dolor!</p>
