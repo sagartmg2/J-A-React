@@ -8,6 +8,7 @@ export default function Header(props) {
                 <span>about us</span>
             </ul>
             <ul>
+                theme:{props.currentTheme}
                 <button onClick={() => {
                     props.setGlobalTheme("DARK")
                 }}>dark</button>
