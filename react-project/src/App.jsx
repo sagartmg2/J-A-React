@@ -5,6 +5,7 @@ import Theme from "./pages/Theme";
 import Header from "./components/Header";
 import Todos from "./pages/Todos";
 import TodosState from "./pages/TodosState";
+import ProductsApi from "./pages/ProductsApi";
 
 export default function App() {
     /* useState  */
@@ -12,7 +13,8 @@ export default function App() {
     return (
         <>
             <div className={`${globalTheme == "DARK" ? "dark-theme" : ""}`}>
-                <TodosState/>
+                <ProductsApi/>
+                {/* <TodosState/> */}
                 {/* <Header
                     currentTheme={globalTheme}
                     setGlobalTheme={setGlobalTheme}

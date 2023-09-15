@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function TodosState() {
 
-    const [todos, setTodos] = useState(["html"]);
+    const [todos, setTodos] = useState(["html", "react", "node"]);
 
     const addTodo = (e) => {
         e.preventDefault()
@@ -15,12 +15,13 @@ export default function TodosState() {
         setTodos(temp)
     }
 
-    const deleteTodo = (index) => {
+    const deleteTodo = (idx) => {
         console.log("delete ");
-        /* put your logic to delete ... hint:filter method */
-        return undefined
+        let temp = todos.filter((el, index) => index != idx)
+        setTodos(temp)
     }
 
+    console.log("re-render...");
     return (
         <>
             <br />
@@ -35,7 +36,7 @@ export default function TodosState() {
             <ul>
                 {
                     todos.map((element, index) => {
-                        return <li>{element}  <button onClick={() =>{
+                        return <li key={element}>{element}<button onClick={() =>{
                             deleteTodo(index)
                         }}>delete</button></li>
                     })
