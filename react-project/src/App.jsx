@@ -6,14 +6,37 @@ import Header from "./components/Header";
 import Todos from "./pages/Todos";
 import TodosState from "./pages/TodosState";
 import ProductsApi from "./pages/ProductsApi";
+import ComponentLifeCycle from "./pages/ComponentLifeCycle";
+import TodosApi from "./pages/TodosApi"
+import { Routes, Route, BrowserRouter, Link } from "react-router-dom"
 
 export default function App() {
     /* useState  */
     const [globalTheme, setGlobalTheme] = useState("LIGHT");
+    
     return (
         <>
+
             <div className={`${globalTheme == "DARK" ? "dark-theme" : ""}`}>
-                <ProductsApi/>
+                {/* <BrowserRouter> */}
+                    <Link to="/todos"> todos-api</Link>
+                    <Link to="/lifecycle" style={{ marginLeft: "1rem" }}> component-lifecylce</Link>
+
+                    <Routes>
+                        <Route path="todos" element={<TodosApi />} />
+                        <Route path="lifecycle" element={<ComponentLifeCycle />} />
+                    </Routes>
+
+                {/* </BrowserRouter> */}
+
+                {/* 
+                <ComponentLifeCycle />
+                <TodosApi /> */}
+
+
+
+
+                {/* <ProductsApi/> */}
                 {/* <TodosState/> */}
                 {/* <Header
                     currentTheme={globalTheme}
