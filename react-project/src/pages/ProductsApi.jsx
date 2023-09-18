@@ -11,11 +11,12 @@ export default function ProductsApi() {
     //     .then(console.log);
 
     console.log("before-api-call");
-
-    axios.get('https://dummyjson.com/products')
+    useEffect(() =>{
+        axios.get('https://jsonplaceholder.typicode.com/todos')
         .then(res => {
-            setProducts(res.data.products)
+            setProducts(res.data)
         })
+    },[])
 
     console.log("after-api call");
 
@@ -23,6 +24,11 @@ export default function ProductsApi() {
         <>
             <div>ProductsApi</div>
             {JSON.stringify(products)}
+            {
+                products.map(el =>{
+                    return <li>{el.title}</li>
+                })
+            }
         </>
     )
 }

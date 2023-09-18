@@ -5,6 +5,9 @@
     delete
 */
 
+import axios from "axios"
+import { useEffect, useState } from "react"
+
 /* http request methods
 
     Create  - post
@@ -28,21 +31,56 @@
             404  // invalid path // respource not found
         5 server error (backend )
             500
-
-
- 
 */
 
 
+
+
 export default function TodosApi() {
+    const [todos, setTodos] = useState([]);
+
+    function fetchtodos(){
+        axios.get("https://todo-api-dom.vercel.app/api/todos")
+            .then(res => {
+                setTodos(res.data.data)
+            })
+            .catch(err => {
+                console.log("err");
+            })
+    }
+    useEffect(() => {
+        console.log("before-api-csll");
+            fetchtodos()
+        console.log("after -api-csll");
+    }, [])
+
+    const createNewTodo = (e) => {
+        e.preventDefault()
+        axios.post("https://todo-api-dom.vercel.app/api/todos", {
+            title: e.target.title.value
+        }).then(res =>{
+            // alert("data created...")
+            fetchtodos()
+        }).catch(err =>{
+            // console.log(err)
+            alert(JSON.stringify(err.response.data))
+        })
+    }
     return <>
-        <br/>
+        <br />
         Todos - API
+        <form onSubmit={createNewTodo}>
+
+            <input type="text" name="title" />
+            <button>add</button>
+        </form>
         <hr />
         <ul>
-            <li>react</li>
-            <li>ghtml</li>
-            <li>css</li>
+            {
+                todos.map(todo => {
+                    return <li>{todo.title} <button>deelte</button></li>
+                })
+            }
         </ul>
     </>
 }
