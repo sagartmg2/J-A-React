@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @media(min-width:640px){
+    .first-header{
+        display: flex;
+    }
+} */
+
+/* input:focus{
+    border: 1px solid red;
+    outline: 0px;
+} */
