@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-.container{
+.container {
     padding-left: .75rem;
     padding-right: .75rem;
     margin-left: auto;
@@ -20,3 +20,21 @@
     border: 1px solid red;
     outline: 0px;
 } */
+
+
+
+.products {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width:640px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width:768px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
